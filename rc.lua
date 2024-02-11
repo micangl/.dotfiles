@@ -306,9 +306,13 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    --awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    --          {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey },            "p",
+              function ()
+                  awful.util.spawn("dmenu_run -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'")
+              end,
+              {description = "run dmenu", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -321,8 +325,9 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+    -- !!Removed to use p for dmenu.
+    --awful.key({ modkey }, "p", function() menubar.show() end,
+    --          {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
