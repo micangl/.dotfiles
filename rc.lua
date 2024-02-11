@@ -47,9 +47,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "tabbed -c -r 2 st -w ''"
 editor = os.getenv("EDITOR") or "nano"
+-- !!The -e parameter if for xterm, not st.
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
