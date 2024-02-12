@@ -323,7 +323,7 @@ globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
+              {description = "lua execute prompt", group = "awesome"})
     -- Menubar
     -- !!Removed to use p for dmenu.
     --awful.key({ modkey }, "p", function() menubar.show() end,
