@@ -179,13 +179,13 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            wibox.widget.systray(),
             -- Pads the textclock with 5 pixels on the right side.
             wibox.container.margin(
                 mytextclock,
-                0,
+                5,
                 5
             ),
+            wibox.widget.systray(),
             s.mylayoutbox,
         },
     }
