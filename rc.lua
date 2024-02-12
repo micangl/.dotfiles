@@ -201,7 +201,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey, "Shift"   }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -209,19 +209,6 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -244,8 +231,6 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -280,8 +265,42 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    --awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-    --          {description = "run prompt", group = "launcher"}),
+    --***********************************************************************--
+    awful.key({ modkey,           }, "j",
+        function ()
+            awful.client.focus.byidx( 1)
+        end,
+        {description = "focus next by index", group = "client"}
+    ),
+
+    awful.key({ modkey,           }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
+        end,
+        {description = "focus previous by index", group = "client"}
+    ),
+
+    awful.key({ modkey }, "b",
+              function ()
+                  screen[1].mywibox.visible = not screen[1].mywibox.visible
+              end,
+              {description = "toggle the statusbar", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
+
+    awful.key({ modkey }, "o",
+              function ()
+                  awful.util.spawn("toggle_touchpad", false)
+              end,
+              {description = "toggle the touchpad", group = "launcher"}),
+
+    awful.key({ modkey , "Shift" }, "o",
+              function ()
+                  awful.util.spawn("toggle_touchscreen", false)
+              end,
+              {description = "toggle the touchscreen", group = "launcher"}),
+
     awful.key({ modkey },            "p",
               function ()
                   -- The command has been taken from dwm's config. Notice that the
@@ -293,6 +312,24 @@ globalkeys = gears.table.join(
                   awful.util.spawn("dmenu_run -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'", false)
               end,
               {description = "run dmenu", group = "launcher"}),
+
+    awful.key({ modkey }, "s",
+              function ()
+                  awful.util.spawn("slock", false)
+              end,
+              {description = "run slock", group = "launcher"}),
+
+    awful.key({ modkey }, "m",
+              function ()
+                  awful.layout.set(awful.layout.suit.max)
+              end,
+              {description = "set max layout", group = "launcher"}),
+
+    awful.key({ modkey }, "t",
+              function ()
+                  awful.layout.set(awful.layout.suit.tile)
+              end,
+              {description = "set tile layout", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -323,10 +360,10 @@ clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
+    --awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+    --          {description = "move to screen", group = "client"}),
+    --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+    --          {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -334,12 +371,12 @@ clientkeys = gears.table.join(
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "(un)maximize", group = "client"}),
+    --awful.key({ modkey,           }, "m",
+    --    function (c)
+    --        c.maximized = not c.maximized
+    --        c:raise()
+    --    end ,
+    --    {description = "(un)maximize", group = "client"}),
     awful.key({ modkey, "Control" }, "m",
         function (c)
             c.maximized_vertical = not c.maximized_vertical
