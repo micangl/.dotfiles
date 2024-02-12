@@ -493,6 +493,13 @@ client.connect_signal("manage", function (c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
+
+    -- Hides the titlebar.
+    -- !! Taken from https://stackoverflow.com/a/60835346. Remember to implement
+    -- a way to toggle the titlebars, like shown in the answer; maybe, by creating
+    -- a menu of lua functions to execute, which would not be important enough
+    -- to warrant a keybind, but could be necessary.
+    awful.titlebar.hide(c)
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
