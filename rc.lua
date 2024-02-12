@@ -310,7 +310,13 @@ globalkeys = gears.table.join(
     --          {description = "run prompt", group = "launcher"}),
     awful.key({ modkey },            "p",
               function ()
-                  awful.util.spawn("dmenu_run -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'")
+                  -- The command has been taken from dwm's config. Notice that the
+                  -- argument `false` after the command disables the startup
+                  -- notification protocol. This is necessary since, apparently,
+                  -- `dmenu_run` doesn't notify the window manager when it has
+                  -- started up; the result is that the cursor remains in
+                  -- waiting mode.
+                  awful.util.spawn("dmenu_run -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'", false)
               end,
               {description = "run dmenu", group = "launcher"}),
 
