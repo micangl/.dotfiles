@@ -129,15 +129,18 @@ local tasklist_buttons = gears.table.join(
                                           end))
 
 local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
+    -- Set the wallpaper to #000000. Note that themes won't be able to set a
+    -- wallpaper unless the original code (commented out below) is used.
+    gears.wallpaper.set("#000000")
+    ---- Wallpaper
+    --if beautiful.wallpaper then
+    --    local wallpaper = beautiful.wallpaper
+    --    -- If wallpaper is a function, call it with the screen
+    --    if type(wallpaper) == "function" then
+    --        wallpaper = wallpaper(s)
+    --    end
+    --    gears.wallpaper.maximized(wallpaper, s, true)
+    --end
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
