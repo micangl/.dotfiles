@@ -44,8 +44,10 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- Taken from https://wiki.archlinux.org/title/awesome
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "default")
+beautiful.init(theme_path)
 
 terminal = "tabbed -c -r 2 st -w ''"
 editor = os.getenv("EDITOR") or "nano"
