@@ -198,7 +198,11 @@ awful.screen.connect_for_each_screen(function(s)
                 5,
                 5
             ),
-            wibox.widget.systray(),
+            wibox.container.margin(
+                wibox.widget.systray(),
+                0,
+                1
+            ),
         },
     }
 end)
