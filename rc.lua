@@ -325,7 +325,8 @@ globalkeys = gears.table.join(
                   -- `dmenu_run` doesn't notify the window manager when it has
                   -- started up; the result is that the cursor remains in
                   -- waiting mode.
-                  awful.util.spawn("dmenu_run -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'", false)
+                  -- -i is to enable case-insensitive searches.
+                  awful.util.spawn("dmenu_run -i -m 0 -fn monospace:size=9 -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee'", false)
               end,
               {description = "run dmenu", group = "launcher"}),
 
@@ -603,3 +604,60 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+local cmds = {
+    --example = { description = "", fn = function() end }
+    {
+        name = "unmaximize",
+        description = "unmaximize a client. To be used if a '+' symbol appears near the client name.",
+        fn = function()
+            client.focus.maximized = not client.focus.maximized
+        end,
+    },
+    {
+        name = "toggle_floating",
+        description = "toggle a client's floating property.",
+        fn = function()
+            client.focus.floating = not client.focus.floating
+        end,
+    },
+    {
+        name = "toggle_titlebar",
+        description = "toggle the titlebars.",
+        fn = function()
+            awful.titlebar.toggle(client.focus)
+        end,
+    },
+}
+
+function awmexec()
+
+    local res = nil
+    local argument = ""
+
+    for _, value in pairs(cmds) do
+        argument = argument .. string.format([[%s: %s\n]], value.name, value.description)
+    end
+
+    awful.spawn.easy_async_with_shell(string.format([[echo -e "%s" | dmenu -i -c -F -l 20 -bw 3]], argument), function(stdout)
+        res = stdout
+        if res ~= nil then
+            -- The dummy return values are the initial and last index of the matched
+            -- pattern. The "[^:]"pattern matches any character which isn't ":";
+            -- the square brackets are a char-set, "^" negates the contents of the
+            -- set, and ":" is the characters which has been chosen as the separator.
+            -- By enclosing the char-set in parantheses, the value it matches is
+            -- returned (in this case it's stored in the res variable). The ":" is
+            -- the separator. ".*" mathces any character ("." pattern), any number
+            -- of times ("*" pattern).
+            _, _, res = string.find(res, "([^:]*):.*")
+
+            for _, value in pairs(cmds) do
+                if value.name == res then
+                    value.fn()
+                end
+            end
+        end
+    end)
+
+end
