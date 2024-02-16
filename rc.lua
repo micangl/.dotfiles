@@ -358,10 +358,6 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"})
-    -- Menubar
-    -- !!Removed to use p for dmenu.
-    --awful.key({ modkey }, "p", function() menubar.show() end,
-    --          {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -549,10 +545,7 @@ client.connect_signal("manage", function (c)
     end
 
     -- Hides the titlebar.
-    -- !! Taken from https://stackoverflow.com/a/60835346. Remember to implement
-    -- a way to toggle the titlebars, like shown in the answer; maybe, by creating
-    -- a menu of lua functions to execute, which would not be important enough
-    -- to warrant a keybind, but could be necessary.
+    -- !! Taken from https://stackoverflow.com/a/60835346.
     awful.titlebar.hide(c)
 end)
 
