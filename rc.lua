@@ -282,6 +282,13 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     --***********************************************************************--
+    awful.key({ modkey,           }, "a",
+        function ()
+            awmexec()
+        end,
+        {description = "activate lua script execution menu", group = "launcher"}
+    ),
+
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
