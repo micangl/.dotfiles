@@ -231,10 +231,6 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
@@ -282,6 +278,19 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     --***********************************************************************--
+    awful.key({ modkey,         }, ".", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+
+    awful.key({ modkey,         }, ",", function () awful.screen.focus_relative(-1) end,
+              {description = "focus the previous screen", group = "screen"}),
+
+    awful.key({ modkey,           }, "Tab",
+        function ()
+            awful.tag.history.restore()
+        end,
+        {description = "switch to previously active tag", group = "launcher"}
+    ),
+
     awful.key({ modkey,           }, "a",
         function ()
             awmexec()
@@ -380,8 +389,6 @@ clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    --awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-    --          {description = "move to screen", group = "client"}),
     --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
     --          {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
@@ -408,7 +415,16 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    --******************************************************************
+    awful.key({ modkey, "Shift"   }, ",",
+                function (c) c:move_to_screen(c.screen.index - 1) end,
+                {description = "move to screen left", group = "client"}),
+
+    awful.key({ modkey, "Shift"   }, ".",
+                function (c) c:move_to_screen(c.screen.index + 1) end,
+                {description = "move to screen right", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.
