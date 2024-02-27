@@ -1,0 +1,12 @@
+#!/bin/bash
+
+STOW_FOLDERS="alacritty,bash,htop,scripts,sioyek,tmux,vlc,xorg,zathura"
+
+pushd $HOME/.dotfiles
+for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+do
+    echo "Stowing $folder"
+    stow -D $folder
+    stow $folder
+done
+popd
