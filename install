@@ -1,6 +1,7 @@
 #!/bin/bash
 
 STOW_FOLDERS="alacritty,bash,htop,scripts,sioyek,tmux,vlc,xorg,zathura"
+STOW_FOLDERS+=",private"
 
 pushd $HOME/.dotfiles
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
