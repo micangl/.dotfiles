@@ -1,0 +1,5 @@
+[submodule "private"]
+	path = private
+	url = https://github.com/micangl/.dotfiles_private
+	branch = master
+	update = merge
