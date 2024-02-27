@@ -1,0 +1,44 @@
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+endglobal
+
+snippet template "Basic template" b
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
+
+snippet env "Environment" b
+\begin{$1}
+	$2
+\end{$1}
+$0
+endsnippet
+
+snippet em "Math environment"
+$${1}$${0}
+endsnippet
+
+snippet ei "Itemize" b
+\begin{itemize}
+	\item $1
+\end{itemize}
+$0
+endsnippet
+
+snippet eeu "Equation U." b
+\begin{equation*}
+	$0
+\end{equation*}
+endsnippet
+
+snippet epm "Pmatrix" b
+\begin{pmatrix}
+	$0
+\end{pmatrix}
+endsnippet
