@@ -10,6 +10,7 @@ git clone --recurse-submodules https://github.com/micangl/.dotfiles
 ```
 
 ## Pulling changes
+
 To pull for the current repository, and all the submodules, execute
 ```sh
 git pull --recurse-submodules
