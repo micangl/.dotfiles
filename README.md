@@ -39,3 +39,4 @@ git config -f .gitmodules submodule.<name>.update merge
 ```
 
 Running `git status` will show that some are unstaged; add, commit and push them.
+Remember to update the install script.
