@@ -1,6 +1,6 @@
 # My dotfiles
 
-Inspired by ThePrimeagen's [dotfiles](https://github.com/ThePrimeagen/.dotfiles), and by this [blog post](https://www.taniarascia.com/git-submodules-private-content/).
+Inspired by ThePrimeagen's [dotfiles](https://github.com/ThePrimeagen/.dotfiles) and by this [blog post](https://www.taniarascia.com/git-submodules-private-content/).
 
 ## Setting up a new machine
 
