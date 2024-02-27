@@ -1,6 +1,6 @@
 # My dotfiles
 
-Inspired by ThePrimeagen's [dotfiles](https://github.com/ThePrimeagen/.dotfiles), and by a [blog post](https://www.taniarascia.com/git-submodules-private-content/).
+Inspired by ThePrimeagen's [dotfiles](https://github.com/ThePrimeagen/.dotfiles), and by this [blog post](https://www.taniarascia.com/git-submodules-private-content/).
 
 ## Setting up a new machine
 
@@ -11,19 +11,19 @@ git clone --recurse-submodules https://github.com/micangl/.dotfiles
 
 ## Pulling changes
 
-To pull for the current repository, and all the submodules, execute
+To pull the current repository, and all the submodules, execute
 ```sh
 git pull --recurse-submodules
 ```
 
 ## Making changes
 
+Changes to a submodule must be added and committed both inside the submodule, and in the base repository (`.dotfiles` in this case).
+
 To push eventual changes, run
 ```sh
 git push --recurse-submodules=on-demand
 ```
-
-Changes to a submodule must be added and committed both inside and submodule, and in the base repository (`.dotfiles` in this case).
 
 ## Adding submodules
 
