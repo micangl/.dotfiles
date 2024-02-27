@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Should connect to the best profile available among the wifi (wlp2s0) ones.
+nmcli connection up ifname wlp2s0

@@ -1,0 +1,5 @@
+set selection-clipboard clipboard
+set adjust-open best-fit
+set scroll-step 120
+
+#include srcery.theme

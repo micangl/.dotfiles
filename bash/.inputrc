@@ -1,0 +1,12 @@
+set active-region-start-color \e[33m
+set active-region-end-color \e[0m
+set colored-stats On
+#set editing-mode vi
+#set show-mode-in-prompt on
+# One tab both both completes the word and, if the completion is ambiguous,
+# immediately lists the possible alternatives (which would normally require
+# two tabs).
+set show-all-if-ambiguous on
+
+# Set ctrl-backspace to delete last word.
+"\C-h": backward-kill-word

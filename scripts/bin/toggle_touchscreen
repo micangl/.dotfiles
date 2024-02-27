@@ -1,0 +1,14 @@
+#!/bin/bash
+# This maps the touchscreen output to the laptop; it's unrealted to the goal of
+# this script but, since it gets unmapped frequently, it might as well invoked
+# here.
+xinput --map-to-output "$TOUCHSCREEN_ID" eDP
+
+val="$(xinput list-props "$TOUCHSCREEN_ID" | grep 'Device Enabled')"
+state="${val: -1}"
+
+if [ "$state" == '1' ]; then
+    xinput set-prop "$TOUCHSCREEN_ID" "Device Enabled" 0
+elif [ "$state" == '0' ]; then
+    xinput set-prop "$TOUCHSCREEN_ID" "Device Enabled" 1
+fi

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [[ "$#" == 0 ]]; then
+    file="$HOME/.config/nvim/init.vim"
+else
+    case $1 in
+        bash)
+            file="$HOME/.bashrc"
+            ;;
+        git)
+            file="$HOME/.gitconfig"
+            ;;
+        nvim)
+            file="$HOME/.config/nvim/init.vim"
+            ;;
+        readline)
+            file="$HOME/.inputrc"
+            ;;
+        sioyek)
+            file="$HOME/.config/sioyek/"
+            ;;
+        software)
+            file="$HOME/software/install_arch/definitive/software.txt"
+            ;;
+        tmux)
+            file="$HOME/.config/tmux/tmux.conf"
+            ;;
+        xinit)
+            file="$HOME/.xinitrc"
+            ;;
+        zathura)
+            file="$HOME/.config/zathura/zathurarc"
+            ;;
+        *)
+            file=$1
+            ;;
+    esac
+fi
+
+$EDITOR $file

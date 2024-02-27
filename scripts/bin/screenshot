@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# ns means that the precision superior to a second.
+scrot ~/Downloads/screenshots/$(date --iso-8601=ns).png

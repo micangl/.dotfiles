@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wmname compiz
+# The environment variables are to enable hardware acceleration.
+# https://wiki.archlinux.org/title/MATLAB#OpenGL_acceleration
+LD_PRELOAD=/usr/lib/libstdc++.so LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/ "$HOME"/software/MATLAB/bin/matlab -desktop &

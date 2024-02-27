@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Prints battery percentage
+
+capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+echo "$capacity%"

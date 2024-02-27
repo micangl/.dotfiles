@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case $(setxkbmap -query | grep layout | awk '{ print $2 }') in
+          us) setxkbmap it ;;
+          it) setxkbmap us ;;
+esac
