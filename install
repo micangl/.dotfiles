@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STOW_FOLDERS="alacritty,bash,htop,scripts,sioyek,tmux,vlc,xorg,zathura"
+STOW_FOLDERS="alacritty,awesomewm,bash,htop,neovim,scripts,sioyek,tmux,vlc,xorg,zathura"
 STOW_FOLDERS+=",private"
 
 pushd $HOME/.dotfiles
